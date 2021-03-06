@@ -27,12 +27,17 @@ def update
   redirect_to todolist_path(list.id)
   
 end
-
+def update
+  list = List.find(params[:id])  # データ（レコード）を1件取得
+  list.update(list_params)
+  redirect_to todolists_path(list.id)
+end
+  def destroy
+  end
 
   private
   # ストロングパラメータ
   def list_params
     params.require(:list).permit(:title,:body,:image)
-    
-end
+ end
 end
